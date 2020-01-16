@@ -28,11 +28,13 @@ Scene {
 
     Character {
         id: cell
-        x: (parent.width - width) / 2
+        x: (parent.width - width) / 2 - 100
         y: (parent.height - height) / 2
         width: dp(100)
         height: dp(100)
 
-        DragHandler { id: dragHandler }
+        DragHandler {
+            id: dragHandler
+        }
     }
 }

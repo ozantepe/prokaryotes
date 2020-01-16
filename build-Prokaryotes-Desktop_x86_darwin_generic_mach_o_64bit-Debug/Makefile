@@ -57,7 +57,6 @@ OBJECTS       = main.o \
 		qrc_resources_user.o
 DIST          = ../Prokaryotes/qml/Character.qml \
 		../Prokaryotes/qml/Enemy.qml \
-		../Prokaryotes/qml/Level.qml \
 		../../../../felgo-installation/Felgo/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../felgo-installation/Felgo/clang_64/mkspecs/qdevice.pri \
 		../../../../felgo-installation/Felgo/clang_64/mkspecs/features/device_config.prf \

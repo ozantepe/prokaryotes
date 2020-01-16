@@ -60,5 +60,16 @@ macx {
 }
 
 DISTFILES += \
-    qml/Character.qml \
-    qml/Enemy.qml
+    qml/common/Constants.qml \
+    qml/common/LevelBase.qml \
+    qml/common/MenuButton.qml \
+    qml/common/SceneBase.qml \
+    qml/entities/Booster.qml \
+    qml/entities/Character.qml \
+    qml/entities/Enemy.qml \
+    qml/levels/Level1.qml \
+    qml/levels/Level2.qml \
+    qml/levels/Level3.qml \
+    qml/scenes/CreditsScene.qml \
+    qml/scenes/MenuScene.qml \
+    qml/scenes/SelectLevelScene.qml
