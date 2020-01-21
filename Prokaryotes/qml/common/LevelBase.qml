@@ -18,5 +18,7 @@ Item {
         DragHandler {
             id: dragHandler
         }
+
+        onMonsterHit: increaseScore()
     }
 }

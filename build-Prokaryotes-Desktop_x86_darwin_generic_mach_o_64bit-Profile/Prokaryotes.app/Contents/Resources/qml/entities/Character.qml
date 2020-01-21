@@ -30,6 +30,7 @@ EntityBase {
                 monsterHit()
             } else {
                 boosted = true
+                characterImage.scale += 0.50
             }
         }
     }
@@ -39,8 +40,7 @@ EntityBase {
         running: boosted
         repeat: true
         onTriggered: {
-
-            // characterImage.scale -= 0.25
+            characterImage.scale -= 0.05
         }
     }
 }

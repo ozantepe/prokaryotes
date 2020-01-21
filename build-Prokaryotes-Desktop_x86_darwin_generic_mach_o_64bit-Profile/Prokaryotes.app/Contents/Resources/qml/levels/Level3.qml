@@ -6,6 +6,16 @@ import "../entities"
 Common.LevelBase {
     levelName: "Level3"
 
+    Enemy {
+        id: enemyCell
+
+        Image {
+            id: enemyImage
+            source: "../../assets/enemy-3.png"
+            anchors.fill: parent
+        }
+    }
+
     Booster {
         id: boosterCell
     }

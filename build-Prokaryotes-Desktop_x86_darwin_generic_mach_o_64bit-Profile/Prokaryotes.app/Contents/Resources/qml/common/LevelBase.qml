@@ -8,15 +8,13 @@ Item {
     property string levelName
     signal increaseScore
 
-    Enemy {
-        id: enemyCell
-    }
-
     Character {
         id: characterCell
 
         DragHandler {
             id: dragHandler
         }
+
+        onMonsterHit: increaseScore()
     }
 }

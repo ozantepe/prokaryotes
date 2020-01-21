@@ -6,6 +6,16 @@ import "../entities"
 Common.LevelBase {
     levelName: "Level1"
 
+    Enemy {
+        id: enemyCell
+
+        Image {
+            id: enemyImage
+            source: "../../assets/enemy-1.png"
+            anchors.fill: parent
+        }
+    }
+
     Component.onCompleted: {
         world.gravity.y += 0.10
     }
