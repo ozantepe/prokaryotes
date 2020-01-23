@@ -22,6 +22,8 @@ SceneBase {
     // score
     property int score: 0
 
+    signal levelCompleted
+
     // set the name of the current level, this will cause the Loader to load the corresponding level
     function setLevel(fileName) {
         activeLevelFileName = fileName
@@ -30,7 +32,17 @@ SceneBase {
     // background
     Image {
         anchors.fill: parent.gameWindowAnchorItem
-        source: "../../assets/background.png"
+        source: {
+            if (activeLevelFileName == "Level1.qml") {
+                "../../assets/background1.png"
+            }
+            else if (activeLevelFileName == "Level2.qml") {
+                "../../assets/background2.png"
+            }
+            else if (activeLevelFileName == "Level3.qml") {
+                "../../assets/background3.png"
+            }
+        }
     }
 
     // back button to leave scene
@@ -45,6 +57,7 @@ SceneBase {
             backButtonPressed()
             activeLevel = undefined
             activeLevelFileName = ""
+            gameNetwork.reportScore(score) // report the current score to the gameNetwork
         }
     }
 
@@ -82,6 +95,22 @@ SceneBase {
         // increase the score when the rectangle is clicked
         onIncreaseScore: {
             score++
+            if (score >= 100) {
+                winSound.play()
+                backButtonPressed()
+                activeLevel = undefined
+                activeLevelFileName = ""
+                gameNetwork.reportScore(score) // report the current score to the gameNetwork
+                levelCompleted()
+            }
+        }
+
+        onGameOver: {
+            gameOverSound.play()
+            backButtonPressed()
+            activeLevel = undefined
+            activeLevelFileName = ""
+            gameNetwork.reportScore(score) // report the current score to the gameNetwork
         }
     }
 
@@ -106,16 +135,40 @@ SceneBase {
         running: true
         repeat: true
         onTriggered: {
-            //            if (activeLevelFileName == "Level1.qml") {
             entityManager.createEntityFromUrl(Qt.resolvedUrl(
                                                   "../entities/Enemy.qml"))
-            //            }
+        }
+    }
+
+    // Enemy2 spawner
+    Timer {
+        interval: 3000
+        running: true
+        repeat: true
+        onTriggered: {
+            if (activeLevelFileName != "Level1.qml") {
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                  "../entities/Enemy2.qml"))
+            }
+        }
+    }
+
+    // Enemy3 spawner
+    Timer {
+        interval: 4000
+        running: true
+        repeat: true
+        onTriggered: {
+            if (activeLevelFileName == "Level3.qml") {
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                  "../entities/Enemy3.qml"))
+            }
         }
     }
 
     // Booster spawner
     Timer {
-        interval: 6000
+        interval: 8000
         running: true
         repeat: true
         onTriggered: {
@@ -124,5 +177,15 @@ SceneBase {
                             Qt.resolvedUrl("../entities/Booster.qml"))
             }
         }
+    }
+
+    SoundEffect {
+      id: gameOverSound
+      source: "../../assets/game_over.wav"
+    }
+
+    SoundEffect {
+      id: winSound
+      source: "../../assets/win.wav"
     }
 }

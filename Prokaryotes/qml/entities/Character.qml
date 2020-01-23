@@ -11,11 +11,20 @@ EntityBase {
 
     property bool boosted: false
 
+    signal characterDied
+
     signal monsterHit
 
     Image {
         id: characterImage
-        source: "../../assets/character.png"
+        source: {
+            if(scale >= 1) {
+                "../../assets/character.png"
+            }
+            else {
+                "../../assets/character_small.png"
+            }
+        }
         anchors.fill: parent
     }
 
@@ -28,9 +37,14 @@ EntityBase {
         fixture.onBeginContact: {
             if (other.categories === Box.Category2) {
                 monsterHit()
+                enemyHitSound.play()
+                if(characterImage.scale < 1) {
+                    characterDied()
+                }
             } else {
                 boosted = true
-                characterImage.scale += 0.50
+                characterImage.scale += 0.5
+                boosterHitSound.play()
             }
         }
     }
@@ -40,7 +54,23 @@ EntityBase {
         running: boosted
         repeat: true
         onTriggered: {
-            characterImage.scale -= 0.05
+            characterImage.scale -= 0.25
+            boosterEndSound.play()
         }
+    }
+
+    SoundEffect {
+      id: enemyHitSound
+      source: "../../assets/enemy_hit.wav"
+    }
+
+    SoundEffect {
+      id: boosterHitSound
+      source: "../../assets/booster_hit.wav"
+    }
+
+    SoundEffect {
+      id: boosterEndSound
+      source: "../../assets/booster_end.wav"
     }
 }

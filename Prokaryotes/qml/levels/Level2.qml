@@ -10,6 +10,10 @@ Common.LevelBase {
         id: boosterCell
     }
 
+    Enemy2 {
+        id: enemy2
+    }
+
     Component.onCompleted: {
         world.gravity.y += 0.20
     }

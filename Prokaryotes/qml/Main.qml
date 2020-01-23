@@ -14,6 +14,13 @@ GameWindow {
         id: constants
     }
 
+    FelgoGameNetwork {
+      id: gameNetwork
+      gameId: 802 // put your gameId here
+      secret: "sccr345smth534random23144ff42" // put your game secret here
+      gameNetworkView: gameNetworkView
+    }
+
     // menu scene
     MenuScene {
         id: menuScene
@@ -21,6 +28,20 @@ GameWindow {
         // listen to the button signals of the scene and change the state according to it
         onSelectLevelPressed: gameWindow.state = "selectLevel"
         onCreditsPressed: gameWindow.state = "credits"
+
+        GameNetworkView {
+          id: gameNetworkView
+          visible: false
+          anchors.fill: parent.gameWindowAnchorItem
+
+          onShowCalled: {
+            gameNetworkView.visible = true
+          }
+
+          onBackClicked: {
+            gameNetworkView.visible = false
+          }
+        }
     }
 
     // scene for selecting levels

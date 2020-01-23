@@ -36,5 +36,9 @@ SceneBase {
             text: "Credits"
             onClicked: creditsPressed()
         }
+        MenuButton {
+            text: "Leaderboard"
+            onClicked: gameNetwork.showLeaderboard() // open the leaderboard view of the GameNetworkView
+        }
     }
 }

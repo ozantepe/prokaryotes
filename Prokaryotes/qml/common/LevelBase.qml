@@ -7,6 +7,7 @@ Item {
 
     property string levelName
     signal increaseScore
+    signal gameOver
 
     Enemy {
         id: enemyCell
@@ -20,5 +21,7 @@ Item {
         }
 
         onMonsterHit: increaseScore()
+
+        onCharacterDied: gameOver()
     }
 }
