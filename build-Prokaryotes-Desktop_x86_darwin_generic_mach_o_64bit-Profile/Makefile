@@ -56,7 +56,6 @@ SOURCES       = ../Prokaryotes/main.cpp qrc_resources_user.cpp
 OBJECTS       = main.o \
 		qrc_resources_user.o
 DIST          = ../Prokaryotes/qml/common/Constants.qml \
-		../Prokaryotes/qml/common/LevelBase.qml \
 		../Prokaryotes/qml/common/MenuButton.qml \
 		../Prokaryotes/qml/common/SceneBase.qml \
 		../Prokaryotes/qml/entities/Booster.qml \
@@ -67,7 +66,6 @@ DIST          = ../Prokaryotes/qml/common/Constants.qml \
 		../Prokaryotes/qml/levels/Level3.qml \
 		../Prokaryotes/qml/scenes/CreditsScene.qml \
 		../Prokaryotes/qml/scenes/MenuScene.qml \
-		../Prokaryotes/qml/scenes/SelectLevelScene.qml \
 		../../../../felgo-installation/Felgo/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../felgo-installation/Felgo/clang_64/mkspecs/qdevice.pri \
 		../../../../felgo-installation/Felgo/clang_64/mkspecs/features/device_config.prf \

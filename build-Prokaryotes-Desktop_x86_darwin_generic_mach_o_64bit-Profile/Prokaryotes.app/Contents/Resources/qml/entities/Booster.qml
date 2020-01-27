@@ -31,6 +31,6 @@ EntityBase {
 
     Component.onCompleted: {
         x = utils.generateRandomValueBetween(0, gameScene.width)
-        y = 0
+        y = 0 - utils.generateRandomValueBetween(0, gameScene.height)
     }
 }

@@ -2,6 +2,7 @@ import Felgo 3.0
 import QtQuick 2.12
 import QtSensors 5.5
 import "../common"
+import "../entities"
 
 SceneBase {
     id: gameScene
@@ -12,76 +13,32 @@ SceneBase {
 
     PhysicsWorld {
         id: world
-        gravity.y: 0.81
+        gravity.y: 5.81
     }
 
-    // the filename of the current level gets stored here, it is used for loading the
-    property string activeLevelFileName
-    // the currently loaded level gets stored here
-    property variant activeLevel
     // score
     property int score: 0
 
-    // set the name of the current level, this will cause the Loader to load the corresponding level
-    function setLevel(fileName) {
-        activeLevelFileName = fileName
-    }
+    signal levelCompleted
 
     // background
     Image {
+        id: backgroundImage
         anchors.fill: parent.gameWindowAnchorItem
-        source: "../../assets/background.png"
+        source: "../../assets/background1.png"
     }
 
-    // back button to leave scene
+    // back button to go menu scene
     MenuButton {
         text: "Back to menu"
-        // anchor the button to the gameWindowAnchorItem to be on the edge of the screen on any device
         anchors.right: gameScene.gameWindowAnchorItem.right
         anchors.rightMargin: 10
         anchors.top: gameScene.gameWindowAnchorItem.top
         anchors.topMargin: 10
         onClicked: {
-            backButtonPressed()
-            activeLevel = undefined
-            activeLevelFileName = ""
-        }
-    }
-
-    // name of the current level
-    Text {
-        anchors.left: gameScene.gameWindowAnchorItem.left
-        anchors.leftMargin: 10
-        anchors.top: gameScene.gameWindowAnchorItem.top
-        anchors.topMargin: 10
-        color: "white"
-        font.pixelSize: 20
-        text: (activeLevel !== undefined)
-              && (activeLevel !== null) ? activeLevel.levelName : ""
-    }
-
-    // load levels at runtime
-    Loader {
-        id: loader
-        source: activeLevelFileName !== "" ? "../levels/" + activeLevelFileName : ""
-        onLoaded: {
-            // reset the score
+            gameNetwork.reportScore(score)
             score = 0
-            // since we did not define a width and height in the level item itself, we are doing it here
-            item.width = gameScene.width
-            item.height = gameScene.height
-            // store the loaded level as activeLevel for easier access
-            activeLevel = item
-        }
-    }
-
-    // we connect the gameScene to the loaded level
-    Connections {
-        // only connect if a level is loaded, to prevent errors
-        target: activeLevel !== undefined ? activeLevel : null
-        // increase the score when the rectangle is clicked
-        onIncreaseScore: {
-            score++
+            backButtonPressed()
         }
     }
 
@@ -102,27 +59,82 @@ SceneBase {
 
     // Enemy spawner
     Timer {
-        interval: 2000
+        interval: 3000
         running: true
         repeat: true
         onTriggered: {
-            //            if (activeLevelFileName == "Level1.qml") {
-            entityManager.createEntityFromUrl(Qt.resolvedUrl(
-                                                  "../entities/Enemy.qml"))
-            //            }
+            if (score < 5) {
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy.qml"))
+            } else if (score < 20) {
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy2.qml"))
+            } else {
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy2.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy3.qml"))
+            }
         }
     }
 
     // Booster spawner
     Timer {
-        interval: 6000
+        interval: 8000
         running: true
         repeat: true
         onTriggered: {
-            if (activeLevelFileName !== "Level1.qml") {
+            if (score >= 5) {
                 entityManager.createEntityFromUrl(
                             Qt.resolvedUrl("../entities/Booster.qml"))
             }
         }
+    }
+
+    SoundEffect {
+        id: gameOverSound
+        source: "../../assets/game_over.wav"
+    }
+
+    SoundEffect {
+        id: winSound
+        source: "../../assets/win.wav"
+    }
+
+    Character {
+        id: characterCell
+
+        DragHandler {
+            id: dragHandler
+        }
+
+        onMonsterHit: increaseScore()
+
+        onCharacterDied: gameOver()
+    }
+
+    function increaseScore() {
+        score++
+        if (score > 20) {
+            winSound.play()
+            backgroundImage.source = "../../assets/background3.png"
+            world.gravity.y = 20.20
+            gameNetwork.reportScore(score)
+        } else if (score > 5) {
+            winSound.play()
+            backgroundImage.source = "../../assets/background2.png"
+            world.gravity.y = 10.80
+            gameNetwork.reportScore(score)
+        }
+    }
+
+    function gameOver() {
+        gameOverSound.play()
+        gameNetwork.reportScore(score)
+        backButtonPressed()
     }
 }

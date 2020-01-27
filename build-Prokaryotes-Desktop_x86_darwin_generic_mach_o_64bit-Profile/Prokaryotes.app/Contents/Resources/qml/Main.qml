@@ -14,39 +14,47 @@ GameWindow {
         id: constants
     }
 
+    FelgoGameNetwork {
+        id: gameNetwork
+        gameId: 802 // put your gameId here
+        secret: "sccr345smth534random23144ff42" // put your game secret here
+        gameNetworkView: gameNetworkView
+    }
+
     // menu scene
     MenuScene {
         id: menuScene
 
-        // listen to the button signals of the scene and change the state according to it
-        onSelectLevelPressed: gameWindow.state = "selectLevel"
-        onCreditsPressed: gameWindow.state = "credits"
-    }
-
-    // scene for selecting levels
-    SelectLevelScene {
-        id: selectLevelScene
-        onLevelPressed: {
-            // selectedLevel is the parameter of the levelPressed signal
-            gameScene.setLevel(selectedLevel)
+        onPlayPressed: {
             gameWindow.state = "game"
         }
+        onCreditsPressed: gameWindow.state = "credits"
+
+        GameNetworkView {
+            id: gameNetworkView
+            visible: false
+            anchors.fill: parent.gameWindowAnchorItem
+
+            onShowCalled: {
+                gameNetworkView.visible = true
+            }
+
+            onBackClicked: {
+                gameNetworkView.visible = false
+            }
+        }
+    }
+
+    GameScene {
+        id: gameScene
         onBackButtonPressed: gameWindow.state = "menu"
     }
 
-    // credits scene
     CreditsScene {
         id: creditsScene
         onBackButtonPressed: gameWindow.state = "menu"
     }
 
-    // game scene to play a level
-    GameScene {
-        id: gameScene
-        onBackButtonPressed: gameWindow.state = "selectLevel"
-    }
-
-    // default state is menu -> default scene is menuScene
     state: "menu"
 
     // state machine, takes care reversing the PropertyChanges when changing the state like changing the opacity back to 0
@@ -63,14 +71,14 @@ GameWindow {
             }
         },
         State {
-            name: "selectLevel"
+            name: "game"
             PropertyChanges {
-                target: selectLevelScene
+                target: gameScene
                 opacity: 1
             }
             PropertyChanges {
                 target: gameWindow
-                activeScene: selectLevelScene
+                activeScene: gameScene
             }
         },
         State {
@@ -82,17 +90,6 @@ GameWindow {
             PropertyChanges {
                 target: gameWindow
                 activeScene: creditsScene
-            }
-        },
-        State {
-            name: "game"
-            PropertyChanges {
-                target: gameScene
-                opacity: 1
-            }
-            PropertyChanges {
-                target: gameWindow
-                activeScene: gameScene
             }
         }
     ]

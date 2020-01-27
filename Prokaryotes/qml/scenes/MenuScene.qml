@@ -5,9 +5,7 @@ import "../common"
 SceneBase {
     id: menuScene
 
-    // signal indicating that the selectLevelScene should be displayed
-    signal selectLevelPressed
-    // signal indicating that the creditsScene should be displayed
+    signal playPressed
     signal creditsPressed
 
     // background
@@ -22,15 +20,15 @@ SceneBase {
         y: 30
         font.pixelSize: 30
         color: "#e9e9e9"
-        text: "MultiSceneMultiLevel"
+        text: "Prokaryotes"
     }
 
     // menu
     Column {
         anchors.centerIn: parent
         MenuButton {
-            text: "Levels"
-            onClicked: selectLevelPressed()
+            text: "Play"
+            onClicked: playPressed()
         }
         MenuButton {
             text: "Credits"
@@ -38,7 +36,7 @@ SceneBase {
         }
         MenuButton {
             text: "Leaderboard"
-            onClicked: gameNetwork.showLeaderboard() // open the leaderboard view of the GameNetworkView
+            onClicked: gameNetwork.showLeaderboard()
         }
     }
 }

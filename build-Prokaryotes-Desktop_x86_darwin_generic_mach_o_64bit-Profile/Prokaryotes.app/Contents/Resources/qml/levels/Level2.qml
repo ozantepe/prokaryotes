@@ -6,21 +6,15 @@ import "../entities"
 Common.LevelBase {
     levelName: "Level2"
 
-    Enemy {
-        id: enemyCell
-
-        Image {
-            id: enemyImage
-            source: "../../assets/enemy-2.png"
-            anchors.fill: parent
-        }
-    }
-
     Booster {
         id: boosterCell
     }
 
+    Enemy2 {
+        id: enemy2
+    }
+
     Component.onCompleted: {
-        world.gravity.y += 0.20
+        world.gravity.y += 0.80
     }
 }
