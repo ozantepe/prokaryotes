@@ -1,6 +1,8 @@
 import Felgo 3.0
 import QtQuick 2.12
 import QtSensors 5.5
+import QtQuick.Controls 2.4
+import QtMultimedia 5.0
 import "../common"
 import "../entities"
 
@@ -20,6 +22,15 @@ SceneBase {
     property int score: 0
 
     signal levelCompleted
+
+    BackgroundMusic {
+      id: backgroundMusic
+      source: "../assets/backgroundMusic.mp3"
+      autoPlay: true
+      autoLoad: true
+      autoPauseInBackground: true
+      muted: false
+    }
 
     // background
     Image {
@@ -50,6 +61,28 @@ SceneBase {
         color: "white"
         font.pixelSize: 40
         text: score
+    }
+
+    Popup {
+        id: winPopup
+        x: 100
+        y: 100
+        width: 200
+        height: 300
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
+    }
+
+    Popup {
+        id: gameOverPopup
+        x: 100
+        y: 100
+        width: 200
+        height: 300
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
     }
 
     EntityManager {

@@ -15,10 +15,10 @@ GameWindow {
     }
 
     FelgoGameNetwork {
-        id: gameNetwork
-        gameId: 802 // put your gameId here
-        secret: "sccr345smth534random23144ff42" // put your game secret here
-        gameNetworkView: gameNetworkView
+      id: gameNetwork
+      gameId: 807 // put your gameId here
+      secret: "sccr345smth534random23144ff42" // put your game secret here
+      gameNetworkView: gameNetworkView
     }
 
     // menu scene

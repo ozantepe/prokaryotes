@@ -15,6 +15,6 @@ Common.LevelBase {
     }
 
     Component.onCompleted: {
-        world.gravity.y += 0.20
+        world.gravity.y += 2.20
     }
 }
