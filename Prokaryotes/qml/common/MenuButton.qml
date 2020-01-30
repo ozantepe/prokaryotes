@@ -29,12 +29,4 @@ Rectangle {
         onPressed: button.opacity = 0.5
         onReleased: button.opacity = 1
     }
-
-    Image {
-        id: tickImage
-        source: "../../assets/tick.png"
-        opacity: completed ? 1 : 0
-        scale: 0.35
-        anchors.centerIn: parent
-    }
 }

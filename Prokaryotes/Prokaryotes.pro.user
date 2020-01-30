@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.10.2, 2020-01-27T15:56:57. -->
+<!-- Written by QtCreator 4.10.2, 2020-01-30T08:17:00. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -310,7 +310,11 @@
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Prokaryotes</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
+<<<<<<< HEAD
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/ozan/Development/courses/mc406/prokaryotes/Prokaryotes/Prokaryotes.pro</value>
+=======
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/Users/ola/Development/MC406/prokaryotes/Prokaryotes/Prokaryotes.pro</value>
+>>>>>>> add animation, images and music
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="uint" key="RunConfiguration.QmlDebugServerPort">3768</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
@@ -321,7 +325,11 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
+<<<<<<< HEAD
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">/Users/ozan/Development/courses/mc406/prokaryotes/build-Prokaryotes-Desktop_x86_darwin_generic_mach_o_64bit-Profile/Prokaryotes.app/Contents/MacOS</value>
+=======
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">/Users/ola/Development/MC406/prokaryotes/build-Prokaryotes-Felgo_Desktop_Qt_5_13_2_clang-Debug/Prokaryotes.app/Contents/MacOS</value>
+>>>>>>> add animation, images and music
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>

@@ -19,10 +19,10 @@ EntityBase {
         id: characterImage
         source: {
             if(scale >= 1) {
-                "../../assets/character.png"
+                "../../assets/characterNormal.png"
             }
             else {
-                "../../assets/character_small.png"
+                "../../assets/characterLosing.png"
             }
         }
         anchors.fill: parent
@@ -38,6 +38,7 @@ EntityBase {
             if (other.categories === Box.Category2) {
                 monsterHit()
                 enemyHitSound.play()
+                characterImage.source = "../../assets/characterEating.png"
                 if(characterImage.scale < 1) {
                     characterDied()
                 }
@@ -46,6 +47,9 @@ EntityBase {
                 characterImage.scale += 0.5
                 boosterHitSound.play()
             }
+        }
+        fixture.onEndContact: {
+            characterImage.source = "../../assets/characterNormal.png"
         }
     }
 

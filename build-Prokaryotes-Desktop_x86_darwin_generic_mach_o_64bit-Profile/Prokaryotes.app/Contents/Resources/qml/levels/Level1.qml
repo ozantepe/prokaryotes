@@ -7,6 +7,6 @@ Common.LevelBase {
     levelName: "Level1"
 
     Component.onCompleted: {
-        world.gravity.y += 0.10
+        world.gravity.y += 1.10
     }
 }
