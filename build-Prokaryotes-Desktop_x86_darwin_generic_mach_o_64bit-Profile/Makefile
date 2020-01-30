@@ -61,6 +61,10 @@ DIST          = ../Prokaryotes/qml/common/Constants.qml \
 		../Prokaryotes/qml/entities/Booster.qml \
 		../Prokaryotes/qml/entities/Character.qml \
 		../Prokaryotes/qml/entities/Enemy.qml \
+		../Prokaryotes/qml/entities/Enemy4.qml \
+		../Prokaryotes/qml/entities/Enemy5.qml \
+		../Prokaryotes/qml/entities/Enemy6.qml \
+		../Prokaryotes/qml/entities/Enemy7.qml \
 		../Prokaryotes/qml/levels/Level1.qml \
 		../Prokaryotes/qml/levels/Level2.qml \
 		../Prokaryotes/qml/levels/Level3.qml \
