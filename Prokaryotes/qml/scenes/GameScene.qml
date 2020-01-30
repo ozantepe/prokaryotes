@@ -19,12 +19,8 @@ SceneBase {
     signal levelCompleted
 
     BackgroundMusic {
-        id: backgroundMusic
-        source: "../assets/backgroundMusic.mp3"
-        autoPlay: true
-        autoLoad: true
-        autoPauseInBackground: true
-        muted: false
+      id: backgroundMusic
+      source: "../../assets/backgroundMusic.mp3"s
     }
 
     // background
@@ -87,18 +83,34 @@ SceneBase {
 
     // Enemy spawner
     Timer {
-        interval: 3000
+        interval: 2500
         running: true
         repeat: true
         onTriggered: {
             if (score < 5) {
                 entityManager.createEntityFromUrl(Qt.resolvedUrl(
                                                       "../entities/Enemy.qml"))
-            } else if (score < 20) {
+            } else if (score < 15) {
                 entityManager.createEntityFromUrl(Qt.resolvedUrl(
                                                       "../entities/Enemy.qml"))
                 entityManager.createEntityFromUrl(Qt.resolvedUrl(
                                                       "../entities/Enemy2.qml"))
+            } else if (score < 35) {
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy2.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy3.qml"))
+            } else if (score < 50) {
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy2.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy3.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy4.qml"))
             } else {
                 entityManager.createEntityFromUrl(Qt.resolvedUrl(
                                                       "../entities/Enemy.qml"))
@@ -106,6 +118,10 @@ SceneBase {
                                                       "../entities/Enemy2.qml"))
                 entityManager.createEntityFromUrl(Qt.resolvedUrl(
                                                       "../entities/Enemy3.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy4.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy5.qml"))
             }
         }
     }

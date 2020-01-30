@@ -66,6 +66,10 @@ DISTFILES += \
     qml/entities/Booster.qml \
     qml/entities/Character.qml \
     qml/entities/Enemy.qml \
+    qml/entities/Enemy4.qml \
+    qml/entities/Enemy5.qml \
+    qml/entities/Enemy6.qml \
+    qml/entities/Enemy7.qml \
     qml/levels/Level1.qml \
     qml/levels/Level2.qml \
     qml/levels/Level3.qml \

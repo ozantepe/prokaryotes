@@ -63,4 +63,6 @@ Temporary Items
 # Qt Creator backups
 *.autosave
 
+*.pro*
+
 # End of https://www.gitignore.io/api/qml,macos,qtcreator
