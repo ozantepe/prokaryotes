@@ -18,11 +18,6 @@ SceneBase {
 
     signal levelCompleted
 
-    BackgroundMusic {
-        id: backgroundMusic
-        source: "../../assets/backgroundMusic.mp3"
-    }
-
     // background
     Image {
         id: backgroundImage

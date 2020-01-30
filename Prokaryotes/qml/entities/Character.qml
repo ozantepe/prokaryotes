@@ -35,10 +35,10 @@ EntityBase {
         collidesWith: Box.Category2 | Box.Category3
         anchors.fill: parent
         fixture.onBeginContact: {
+            characterImage.source = "../../assets/characterEating.png"
             if (other.categories === Box.Category2) {
                 monsterHit()
                 enemyHitSound.play()
-                characterImage.source = "../../assets/characterEating.png"
                 if(characterImage.scale < 1) {
                     characterDied()
                 }
