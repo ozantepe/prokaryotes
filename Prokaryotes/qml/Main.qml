@@ -6,26 +6,43 @@ import "common"
 GameWindow {
     id: gameWindow
 
-    // window size
+    PhysicsWorld {
+        id: world
+        gravity.y: 5.81
+    }
+
     screenWidth: 640
     screenHeight: 960
+
+    property GameScene gameScene
 
     Constants {
         id: constants
     }
 
     FelgoGameNetwork {
-      id: gameNetwork
-      gameId: 807 // put your gameId here
-      secret: "sccr345smth534random23144ff42" // put your game secret here
-      gameNetworkView: gameNetworkView
+        id: gameNetwork
+        gameId: constants.gameId
+        secret: constants.gameSecret
+        gameNetworkView: gameNetworkView
     }
 
-    // menu scene
+    Component {
+        id: sceneCreator
+
+        GameScene {
+            onBackButtonPressed: {
+                gameWindow.state = "menu"
+            }
+        }
+    }
+
     MenuScene {
         id: menuScene
 
         onPlayPressed: {
+            var game = sceneCreator.createObject(gameWindow)
+            gameScene = game
             gameWindow.state = "game"
         }
         onCreditsPressed: gameWindow.state = "credits"
@@ -45,19 +62,12 @@ GameWindow {
         }
     }
 
-    GameScene {
-        id: gameScene
-        onBackButtonPressed: gameWindow.state = "menu"
-    }
-
     CreditsScene {
         id: creditsScene
         onBackButtonPressed: gameWindow.state = "menu"
     }
 
     state: "menu"
-
-    // state machine, takes care reversing the PropertyChanges when changing the state like changing the opacity back to 0
     states: [
         State {
             name: "menu"

@@ -13,23 +13,18 @@ SceneBase {
     width: 320
     height: 480
 
-    PhysicsWorld {
-        id: world
-        gravity.y: 5.81
-    }
-
     // score
     property int score: 0
 
     signal levelCompleted
 
     BackgroundMusic {
-      id: backgroundMusic
-      source: "../assets/backgroundMusic.mp3"
-      autoPlay: true
-      autoLoad: true
-      autoPauseInBackground: true
-      muted: false
+        id: backgroundMusic
+        source: "../assets/backgroundMusic.mp3"
+        autoPlay: true
+        autoLoad: true
+        autoPauseInBackground: true
+        muted: false
     }
 
     // background
@@ -48,8 +43,8 @@ SceneBase {
         anchors.topMargin: 10
         onClicked: {
             gameNetwork.reportScore(score)
-            score = 0
             backButtonPressed()
+            gameScene.destroy()
         }
     }
 

@@ -8,10 +8,9 @@ SceneBase {
     signal playPressed
     signal creditsPressed
 
-    // background
-    Rectangle {
+    Image {
         anchors.fill: parent.gameWindowAnchorItem
-        color: "#47688e"
+        source: "../../assets/menu.png"
     }
 
     // the "logo"
