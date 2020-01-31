@@ -7,19 +7,17 @@ SceneBase {
 
     signal playPressed
     signal creditsPressed
+    signal musicPressed
 
     Image {
         anchors.fill: parent.gameWindowAnchorItem
         source: "../../assets/menu.png"
     }
 
-    // the "logo"
-    Text {
+    Image {
+        source: "../../assets/logo.png"
+        scale: 0.5
         anchors.horizontalCenter: parent.horizontalCenter
-        y: 30
-        font.pixelSize: 30
-        color: "#e9e9e9"
-        text: "Prokaryotes"
     }
 
     // menu
@@ -28,14 +26,22 @@ SceneBase {
         MenuButton {
             text: "Play"
             onClicked: playPressed()
+            anchors.horizontalCenter: parent.horizontalCenter
         }
         MenuButton {
             text: "Credits"
             onClicked: creditsPressed()
+            anchors.horizontalCenter: parent.horizontalCenter
         }
         MenuButton {
             text: "Leaderboard"
             onClicked: gameNetwork.showLeaderboard()
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+        MenuButton {
+            text: "Music On/Off"
+            onClicked: musicPressed()
+            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
 }

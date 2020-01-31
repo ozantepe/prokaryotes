@@ -106,6 +106,30 @@ SceneBase {
                                                       "../entities/Enemy3.qml"))
                 entityManager.createEntityFromUrl(Qt.resolvedUrl(
                                                       "../entities/Enemy4.qml"))
+            } else if (score < 75) {
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy2.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy3.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy4.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy5.qml"))
+            } else if (score < 100) {
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy2.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy3.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy4.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy5.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy6.qml"))
             } else {
                 entityManager.createEntityFromUrl(Qt.resolvedUrl(
                                                       "../entities/Enemy.qml"))
@@ -117,6 +141,10 @@ SceneBase {
                                                       "../entities/Enemy4.qml"))
                 entityManager.createEntityFromUrl(Qt.resolvedUrl(
                                                       "../entities/Enemy5.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy6.qml"))
+                entityManager.createEntityFromUrl(Qt.resolvedUrl(
+                                                      "../entities/Enemy7.qml"))
             }
         }
     }
@@ -158,12 +186,17 @@ SceneBase {
 
     function increaseScore() {
         score++
-        if (score == 20) {
+        if (score == 55) {
+            winSound.play()
+            backgroundImage.source = "../../assets/background4.png"
+            world.gravity.y = 25.20
+            gameNetwork.reportScore(score)
+        } else if (score == 25) {
             winSound.play()
             backgroundImage.source = "../../assets/background3.png"
             world.gravity.y = 20.20
             gameNetwork.reportScore(score)
-        } else if (score == 5) {
+        } else if (score == 10) {
             winSound.play()
             backgroundImage.source = "../../assets/background2.png"
             world.gravity.y = 10.80

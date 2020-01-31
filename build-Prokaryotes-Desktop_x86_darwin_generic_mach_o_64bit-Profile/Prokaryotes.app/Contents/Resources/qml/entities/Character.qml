@@ -18,11 +18,10 @@ EntityBase {
     Image {
         id: characterImage
         source: {
-            if(scale >= 1) {
+            if (gameScene.score < 10 ) {
+                "../../assets/character.png"
+            } else {
                 "../../assets/characterNormal.png"
-            }
-            else {
-                "../../assets/characterLosing.png"
             }
         }
         anchors.fill: parent
@@ -35,7 +34,12 @@ EntityBase {
         collidesWith: Box.Category2 | Box.Category3
         anchors.fill: parent
         fixture.onBeginContact: {
-            characterImage.source = "../../assets/characterEating.png"
+            if (gameScene.score < 10 ) {
+                characterImage.source = "../../assets/character1Eating.png"
+            } else {
+                characterImage.source = "../../assets/characterEating.png"
+            }
+
             if (other.categories === Box.Category2) {
                 monsterHit()
                 enemyHitSound.play()
@@ -49,7 +53,11 @@ EntityBase {
             }
         }
         fixture.onEndContact: {
-            characterImage.source = "../../assets/characterNormal.png"
+            if (gameScene.score < 10 ) {
+                characterImage.source = "../../assets/character.png"
+            } else {
+                characterImage.source = "../../assets/characterNormal.png"
+            }
         }
     }
 
@@ -59,6 +67,9 @@ EntityBase {
         repeat: true
         onTriggered: {
             characterImage.scale -= 0.25
+            if (characterImage.scale < 1) {
+                characterImage.source = "../../assets/characterLosing.png"
+            }
             boosterEndSound.play()
         }
     }

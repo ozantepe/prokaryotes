@@ -15,6 +15,7 @@ GameWindow {
     screenHeight: 960
 
     property GameScene gameScene
+    property bool musicOn: true
 
     Constants {
         id: constants
@@ -51,6 +52,16 @@ GameWindow {
             gameWindow.state = "game"
         }
         onCreditsPressed: gameWindow.state = "credits"
+
+        onMusicPressed: {
+            if (musicOn) {
+                backgroundMusic.stop()
+                musicOn = false
+            } else {
+                backgroundMusic.play()
+                musicOn = true
+            }
+        }
 
         GameNetworkView {
             id: gameNetworkView

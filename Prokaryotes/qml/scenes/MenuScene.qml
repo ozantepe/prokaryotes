@@ -15,20 +15,10 @@ SceneBase {
     }
 
     Image {
-//        anchors.fill: parent.gameWindowAnchorItem
         source: "../../assets/logo.png"
         scale: 0.5
         anchors.horizontalCenter: parent.horizontalCenter
     }
-
-    // the "logo"
-//    Text {
-//        anchors.horizontalCenter: parent.horizontalCenter
-//        y: 30
-//        font.pixelSize: 30
-//        color: "#e9e9e9"
-//        text: "Prokaryotes"
-//    }
 
     // menu
     Column {
@@ -36,18 +26,22 @@ SceneBase {
         MenuButton {
             text: "Play"
             onClicked: playPressed()
+            anchors.horizontalCenter: parent.horizontalCenter
         }
         MenuButton {
             text: "Credits"
             onClicked: creditsPressed()
+            anchors.horizontalCenter: parent.horizontalCenter
         }
         MenuButton {
             text: "Leaderboard"
             onClicked: gameNetwork.showLeaderboard()
+            anchors.horizontalCenter: parent.horizontalCenter
         }
         MenuButton {
             text: "Music On/Off"
             onClicked: musicPressed()
+            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
 }

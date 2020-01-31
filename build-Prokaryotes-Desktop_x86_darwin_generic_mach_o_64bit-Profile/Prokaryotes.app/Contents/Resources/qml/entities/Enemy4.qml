@@ -22,7 +22,7 @@ EntityBase {
         collidesWith: Box.Category1
         anchors.fill: parent
         fixture.onBeginContact: {
-            enemy3Image.opacity = 0
+            enemy4Image.opacity = 0
         }
         fixture.onEndContact: {
             removeEntity()
