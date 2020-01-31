@@ -1,7 +1,3 @@
-
-# Created by https://www.gitignore.io/api/qml,macos,qtcreator
-# Edit at https://www.gitignore.io/?templates=qml,macos,qtcreator
-
 ### macOS ###
 # General
 .DS_Store
@@ -63,6 +59,4 @@ Temporary Items
 # Qt Creator backups
 *.autosave
 
-*.pro*
-
-# End of https://www.gitignore.io/api/qml,macos,qtcreator
+Prokaryotes/Prokaryotes.pro.user
