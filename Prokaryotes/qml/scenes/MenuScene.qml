@@ -7,6 +7,7 @@ SceneBase {
 
     signal playPressed
     signal creditsPressed
+    signal musicPressed
 
     Image {
         anchors.fill: parent.gameWindowAnchorItem
@@ -36,6 +37,10 @@ SceneBase {
         MenuButton {
             text: "Leaderboard"
             onClicked: gameNetwork.showLeaderboard()
+        }
+        MenuButton {
+            text: "Music On/Off"
+            onClicked: musicPressed()
         }
     }
 }
