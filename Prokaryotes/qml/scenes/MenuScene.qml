@@ -14,14 +14,21 @@ SceneBase {
         source: "../../assets/menu.png"
     }
 
-    // the "logo"
-    Text {
+    Image {
+//        anchors.fill: parent.gameWindowAnchorItem
+        source: "../../assets/logo.png"
+        scale: 0.5
         anchors.horizontalCenter: parent.horizontalCenter
-        y: 30
-        font.pixelSize: 30
-        color: "#e9e9e9"
-        text: "Prokaryotes"
     }
+
+    // the "logo"
+//    Text {
+//        anchors.horizontalCenter: parent.horizontalCenter
+//        y: 30
+//        font.pixelSize: 30
+//        color: "#e9e9e9"
+//        text: "Prokaryotes"
+//    }
 
     // menu
     Column {

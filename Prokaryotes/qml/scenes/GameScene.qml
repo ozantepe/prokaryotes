@@ -186,12 +186,17 @@ SceneBase {
 
     function increaseScore() {
         score++
-        if (score == 20) {
+        if (score == 55) {
+            winSound.play()
+            backgroundImage.source = "../../assets/background4.png"
+            world.gravity.y = 25.20
+            gameNetwork.reportScore(score)
+        } else if (score == 25) {
             winSound.play()
             backgroundImage.source = "../../assets/background3.png"
             world.gravity.y = 20.20
             gameNetwork.reportScore(score)
-        } else if (score == 5) {
+        } else if (score == 10) {
             winSound.play()
             backgroundImage.source = "../../assets/background2.png"
             world.gravity.y = 10.80
