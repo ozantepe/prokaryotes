@@ -18,11 +18,6 @@ SceneBase {
 
     signal levelCompleted
 
-    BackgroundMusic {
-        id: backgroundMusic
-        source: "../../assets/backgroundMusic.mp3"
-    }
-
     // background
     Image {
         id: backgroundImage
@@ -163,12 +158,12 @@ SceneBase {
 
     function increaseScore() {
         score++
-        if (score > 20) {
+        if (score == 20) {
             winSound.play()
             backgroundImage.source = "../../assets/background3.png"
             world.gravity.y = 20.20
             gameNetwork.reportScore(score)
-        } else if (score > 5) {
+        } else if (score == 5) {
             winSound.play()
             backgroundImage.source = "../../assets/background2.png"
             world.gravity.y = 10.80

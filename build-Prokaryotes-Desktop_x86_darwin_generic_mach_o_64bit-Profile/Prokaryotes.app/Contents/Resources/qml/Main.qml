@@ -27,6 +27,11 @@ GameWindow {
         gameNetworkView: gameNetworkView
     }
 
+    BackgroundMusic {
+        id: backgroundMusic
+        source: "../../assets/backgroundMusic.mp3"
+    }
+
     Component {
         id: sceneCreator
 
