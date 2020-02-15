@@ -29,12 +29,7 @@ SceneBase {
             anchors.horizontalCenter: parent.horizontalCenter
         }
         MenuButton {
-            text: "Credits"
-            onClicked: creditsPressed()
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
-        MenuButton {
-            text: "Leaderboard"
+            text: "Statistics"
             onClicked: gameNetwork.showLeaderboard()
             anchors.horizontalCenter: parent.horizontalCenter
         }

@@ -73,5 +73,4 @@ DISTFILES += \
     qml/levels/Level1.qml \
     qml/levels/Level2.qml \
     qml/levels/Level3.qml \
-    qml/scenes/CreditsScene.qml \
     qml/scenes/MenuScene.qml

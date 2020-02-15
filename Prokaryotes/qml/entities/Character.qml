@@ -11,6 +11,8 @@ EntityBase {
 
     property bool boosted: false
 
+    property bool died: false
+
     signal characterDied
 
     signal monsterHit
@@ -43,7 +45,8 @@ EntityBase {
             if (other.categories === Box.Category2) {
                 monsterHit()
                 enemyHitSound.play()
-                if(characterImage.scale < 1) {
+                if (characterImage.scale < 1) {
+                    died = true
                     characterDied()
                 }
             } else {
@@ -70,7 +73,9 @@ EntityBase {
             if (characterImage.scale < 1) {
                 characterImage.source = "../../assets/characterLosing.png"
             }
-            boosterEndSound.play()
+            if (!died) {
+                boosterEndSound.play()
+            }
         }
     }
 

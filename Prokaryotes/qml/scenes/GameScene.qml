@@ -49,28 +49,6 @@ SceneBase {
         text: score
     }
 
-    Popup {
-        id: winPopup
-        x: 100
-        y: 100
-        width: 200
-        height: 300
-        modal: true
-        focus: true
-        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
-    }
-
-    Popup {
-        id: gameOverPopup
-        x: 100
-        y: 100
-        width: 200
-        height: 300
-        modal: true
-        focus: true
-        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutsideParent
-    }
-
     EntityManager {
         id: entityManager
         entityContainer: gameScene
@@ -191,17 +169,22 @@ SceneBase {
             backgroundImage.source = "../../assets/background4.png"
             world.gravity.y = 25.20
             gameNetwork.reportScore(score)
+            gameNetwork.unlockAchievement("thirdLevelCompleted")
         } else if (score == 25) {
             winSound.play()
             backgroundImage.source = "../../assets/background3.png"
             world.gravity.y = 20.20
             gameNetwork.reportScore(score)
+            gameNetwork.unlockAchievement("secondLevelCompleted")
         } else if (score == 10) {
             winSound.play()
             backgroundImage.source = "../../assets/background2.png"
             world.gravity.y = 10.80
             gameNetwork.reportScore(score)
+            gameNetwork.unlockAchievement("firstLevelCompleted")
         }
+        gameNetwork.incrementAchievement("score20")
+        gameNetwork.incrementAchievement("score50")
     }
 
     function gameOver() {
